@@ -1,5 +1,6 @@
 package com.greenfoxacademy.opal.kalendaryo.kalendaryo;
 
+import com.greenfoxacademy.opal.kalendaryo.kalendaryo.model.UserModel;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,9 +25,11 @@ import java.nio.charset.Charset;
 @EnableWebMvc
 public class KalendaryoApplicationTests {
 
-	private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
+	private UserModel contentType;
+
+	/*private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
 		MediaType.APPLICATION_JSON.getSubtype(),
-		Charset.forName("utf8"));
+		Charset.forName("utf8"));*/
 
 	@Autowired
 	WebApplicationContext webApplicationContext;
@@ -52,8 +55,7 @@ public class KalendaryoApplicationTests {
 		mock.perform(post("/auth")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(response.toString()))
-			.andExpect(status().isIAmATeapot())
-			.andExpect(content().contentType(contentType));
+			.andExpect(content().contentType(String.valueOf(contentType)));
 
 	}
 
