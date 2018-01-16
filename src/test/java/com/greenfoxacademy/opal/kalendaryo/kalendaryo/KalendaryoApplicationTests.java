@@ -61,6 +61,7 @@ public class KalendaryoApplicationTests {
 		mock.perform(post("/auth")
 			.contentType(MediaType.APPLICATION_JSON)
 			.headers(headers)).andDo(print())
+			.andExpect(status().isOk())
 			.andExpect(content().contentType(String.valueOf(contentType)));
 
 	}
