@@ -13,6 +13,15 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+apply plugin: "io.spring.dependency-management"
+ 
+dependencyManagement {
+	imports {
+    	mavenBom ('com.amazonaws:aws-java-sdk-bom:1.10.47')
+	}
+}
+ 
 
 group = 'com.greenfoxacademy.opal.kalendaryo'
 version = '0.0.6-SNAPSHOT'
@@ -36,5 +45,5 @@ dependencies {
 	compile group: 'com.github.javafaker', name: 'javafaker', version: '0.12'
 	testCompile('org.mockito:mockito-core:2.7.22')
   	compile('org.springframework.boot:spring-boot-starter-test')
-
+	compile ('com.amazonaws:aws-java-sdk-s3')
 }
